@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BetterReads.Recommendations", "BetterReads.Recommendations", "{0BD3BA13-3566-40B3-86A4-08CF427F2024}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BetterReads.Books", "BetterReads.Books", "{B05BE457-8F99-40DC-81B1-632C47D683F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BetterReads.Auth", "BetterReads.Auth", "{4E022F59-2B59-474C-AC22-38EC8201DB42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BetterReads.Shelves", "BetterReads.Shelves", "{39DAE573-0C67-4C13-968A-32AD9FAF1F7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BetterReads.Reviews", "BetterReads.Reviews", "{4E5FA1AA-F49B-4741-82DC-FAB429D22235}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterReads.Auth.Web", "BetterReads.Auth\BetterReads.Auth.Web\BetterReads.Auth.Web.csproj", "{D3289D38-7119-400A-9820-43107A7A50F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterReads.Books.Web", "BetterReads.Books\BetterReads.Books.Web\BetterReads.Books.Web.csproj", "{55A2A6AD-276D-4542-B9B6-B4A74629784D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterReads.Recommendations.Web", "BetterReads.Recommendations\BetterReads.Recommendations.Web\BetterReads.Recommendations.Web.csproj", "{78C7007D-EFCB-441B-A83B-68A751E279E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterReads.Reviews.Web", "BetterReads.Reviews\BetterReads.Reviews.Web\BetterReads.Reviews.Web.csproj", "{67CB6B3A-0F96-4339-B7EE-0FD4F3FDDFB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterReads.Shelves.Web", "BetterReads.Shelves\BetterReads.Shelves.Web\BetterReads.Shelves.Web.csproj", "{F973B2AE-6AC1-4D88-B3B4-9DB5CF93D3D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BetterReads.ApiGateway", "BetterReads.ApiGateway", "{C44A87F8-3B79-4385-8037-5A0E19EDC8B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterReads.ApiGateway.Web", "BetterReads.ApiGateway\BetterReads.ApiGateway.Web\BetterReads.ApiGateway.Web.csproj", "{18587A20-3C98-4E5B-905B-759661706681}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D3289D38-7119-400A-9820-43107A7A50F4} = {4E022F59-2B59-474C-AC22-38EC8201DB42}
+		{55A2A6AD-276D-4542-B9B6-B4A74629784D} = {B05BE457-8F99-40DC-81B1-632C47D683F9}
+		{78C7007D-EFCB-441B-A83B-68A751E279E7} = {0BD3BA13-3566-40B3-86A4-08CF427F2024}
+		{67CB6B3A-0F96-4339-B7EE-0FD4F3FDDFB4} = {4E5FA1AA-F49B-4741-82DC-FAB429D22235}
+		{F973B2AE-6AC1-4D88-B3B4-9DB5CF93D3D8} = {39DAE573-0C67-4C13-968A-32AD9FAF1F7D}
+		{18587A20-3C98-4E5B-905B-759661706681} = {C44A87F8-3B79-4385-8037-5A0E19EDC8B3}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3289D38-7119-400A-9820-43107A7A50F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3289D38-7119-400A-9820-43107A7A50F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3289D38-7119-400A-9820-43107A7A50F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3289D38-7119-400A-9820-43107A7A50F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55A2A6AD-276D-4542-B9B6-B4A74629784D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55A2A6AD-276D-4542-B9B6-B4A74629784D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55A2A6AD-276D-4542-B9B6-B4A74629784D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55A2A6AD-276D-4542-B9B6-B4A74629784D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78C7007D-EFCB-441B-A83B-68A751E279E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78C7007D-EFCB-441B-A83B-68A751E279E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78C7007D-EFCB-441B-A83B-68A751E279E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78C7007D-EFCB-441B-A83B-68A751E279E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CB6B3A-0F96-4339-B7EE-0FD4F3FDDFB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CB6B3A-0F96-4339-B7EE-0FD4F3FDDFB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67CB6B3A-0F96-4339-B7EE-0FD4F3FDDFB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CB6B3A-0F96-4339-B7EE-0FD4F3FDDFB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F973B2AE-6AC1-4D88-B3B4-9DB5CF93D3D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F973B2AE-6AC1-4D88-B3B4-9DB5CF93D3D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F973B2AE-6AC1-4D88-B3B4-9DB5CF93D3D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F973B2AE-6AC1-4D88-B3B4-9DB5CF93D3D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18587A20-3C98-4E5B-905B-759661706681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18587A20-3C98-4E5B-905B-759661706681}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18587A20-3C98-4E5B-905B-759661706681}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18587A20-3C98-4E5B-905B-759661706681}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

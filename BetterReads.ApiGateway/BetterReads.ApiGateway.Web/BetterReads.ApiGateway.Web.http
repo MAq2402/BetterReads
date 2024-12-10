@@ -1,0 +1,6 @@
+@BetterReads.ApiGateway.Web_HostAddress = http://localhost:5296
+
+GET {{BetterReads.ApiGateway.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

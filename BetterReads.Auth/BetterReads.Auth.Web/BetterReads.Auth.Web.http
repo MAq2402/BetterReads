@@ -1,0 +1,6 @@
+@BetterReads.Auth.Web_HostAddress = http://localhost:5019
+
+GET {{BetterReads.Auth.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

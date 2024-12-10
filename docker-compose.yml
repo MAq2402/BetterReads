@@ -1,0 +1,31 @@
+services:
+  api-gateway:
+    image: api-gateway
+    build: ./BetterReads.ApiGateway/BetterReads.ApiGateway.Web
+    ports: 
+      - "5000:5000"
+  auth:
+    image: auth
+    build: ./BetterReads.Auth/BetterReads.Auth.Web
+    ports: 
+      - "5001:5001"
+  books:
+    image: books
+    build: ./BetterReads.Books/BetterReads.Books.Web
+    ports: 
+      - "5002:5002"
+  recommendations:
+    image: recommendations
+    build: ./BetterReads.Recommendations/BetterReads.Recommendations.Web
+    ports: 
+      - "5003:5003"
+  reviews:
+    image: reviews
+    build: ./BetterReads.Reviews/BetterReads.Reviews.Web
+    ports: 
+      - "5004:5004"
+  shelves:
+    image: shelves
+    build: ./BetterReads.Shelves/BetterReads.Shelves.Web
+    ports: 
+      - "5005:5005"
