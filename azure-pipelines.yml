@@ -25,6 +25,7 @@ steps:
     azureContainerRegistry: '{"loginServer":"betterreadsregistry.azurecr.io", "id" : "/subscriptions/0c5e1aa1-1e9e-4789-99a8-51d3a3ce3bb9/resourceGroups/BetterReads/providers/Microsoft.ContainerRegistry/registries/BetterReadsRegistry"}'
     dockerComposeFile: '**/docker-compose-azure.yml'
     action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'build'
 - task: DockerCompose@1
   inputs:
     projectName: betterreads
@@ -33,3 +34,4 @@ steps:
     azureContainerRegistry: '{"loginServer":"betterreadsregistry.azurecr.io", "id" : "/subscriptions/0c5e1aa1-1e9e-4789-99a8-51d3a3ce3bb9/resourceGroups/BetterReads/providers/Microsoft.ContainerRegistry/registries/BetterReadsRegistry"}'
     dockerComposeFile: '**/docker-compose-azure.yml'
     action: 'Push services'
+    dockerComposeCommand: 'push'
