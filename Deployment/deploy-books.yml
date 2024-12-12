@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: books
+  labels:
+    app: books
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: books
+  template:
+    metadata:
+      labels:
+        app: books
+    spec: 
+      containers:
+        - name: books
+          image: betterreadsregistry.azurecr.io/books:latest
+          imagePullPolicy: Always
+          ports: 
+            - containerPort: 5002
+      imagePullSecrets:
+        - name: regcred

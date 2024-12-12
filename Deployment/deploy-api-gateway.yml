@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway-deployment
+  labels:
+    app: api-gateway
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec: 
+      containers:
+        - name: api-gateway
+          image: betterreadsregistry.azurecr.io/api-gateway:latest
+          imagePullPolicy: Always
+          ports: 
+            - containerPort: 5000
+      imagePullSecrets:
+        - name: regcred

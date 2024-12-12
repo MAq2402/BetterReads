@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shelves
+  labels:
+    app: shelves
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: shelves
+  template:
+    metadata:
+      labels:
+        app: shelves
+    spec: 
+      containers:
+        - name: shelves
+          image: betterreadsregistry.azurecr.io/shelves:latest
+          imagePullPolicy: Always
+          ports: 
+            - containerPort: 5005
+      imagePullSecrets:
+        - name: regcred

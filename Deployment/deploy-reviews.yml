@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reviews
+  labels:
+    app: reviews
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: reviews
+  template:
+    metadata:
+      labels:
+        app: reviews
+    spec: 
+      containers:
+        - name: reviews
+          image: betterreadsregistry.azurecr.io/reviews:latest
+          imagePullPolicy: Always
+          ports: 
+            - containerPort: 5004
+      imagePullSecrets:
+        - name: regcred
