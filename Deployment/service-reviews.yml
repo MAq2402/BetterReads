@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: books
+  name: reviews
   labels:
-    app: books
+    app: reviews
 spec:
   ports:
-    - port: 5002
-      targetPort: 5002
+    - port: 5004
+      targetPort: 5004
   selector:
-    app: books
+    app: reviews
   type: ClusterIP

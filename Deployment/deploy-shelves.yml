@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-gateway-deployment
+  name: shelves
   labels:
-    app: api-gateway
+    app: shelves
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: api-gateway
+      app: shelves
   template:
     metadata:
       labels:
-        app: api-gateway
+        app: shelves
     spec: 
       containers:
-        - name: api-gateway
-          image: betterreadsregistry.azurecr.io/api-gateway:latest
+        - name: shelves
+          image: betterreadsregistry.azurecr.io/shelves:latest
           imagePullPolicy: Always
           ports: 
-            - containerPort: 5000
+            - containerPort: 5005
       imagePullSecrets:
         - name: regcred

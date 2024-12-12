@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: books
+  name: auth
   labels:
-    app: books
+    app: auth
 spec:
   ports:
-    - port: 5002
-      targetPort: 5002
+    - port: 5001
+      targetPort: 5001
   selector:
-    app: books
+    app: auth
   type: ClusterIP
