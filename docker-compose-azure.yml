@@ -1,0 +1,31 @@
+services:
+  api-gateway:
+    image: betterreadsregistry.azurecr.io/api-gateway:latest
+    build: ./BetterReads.ApiGateway/BetterReads.ApiGateway.Web
+    ports: 
+      - "5000:5000"
+  auth:
+    image: betterreadsregistry.azurecr.io/auth:latest
+    build: ./BetterReads.Auth/BetterReads.Auth.Web
+    ports: 
+      - "5001:5001"
+  books:
+    image: betterreadsregistry.azurecr.io/books:latest
+    build: ./BetterReads.Books/BetterReads.Books.Web
+    ports: 
+      - "5002:5002"
+  recommendations:
+    image: betterreadsregistry.azurecr.io/recommendations:latest
+    build: ./BetterReads.Recommendations/BetterReads.Recommendations.Web
+    ports: 
+      - "5003:5003"
+  reviews:
+    image: betterreadsregistry.azurecr.io/reviews:latest
+    build: ./BetterReads.Reviews/BetterReads.Reviews.Web
+    ports: 
+      - "5004:5004"
+  shelves:
+    image: betterreadsregistry.azurecr.io/shelves:latest
+    build: ./BetterReads.Shelves/BetterReads.Shelves.Web
+    ports: 
+      - "5005:5005"

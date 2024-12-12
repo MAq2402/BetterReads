@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: better-reads-deployment
+  labels:
+    app: better-reads
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: better-reads
+  template:
+    metadata:
+      labels:
+        app: better-reads
+    spec: 
+      containers:
+        - name: api-gateway
+          image: betterreadsregistry.azurecr.io/api-gateway:latest
+          imagePullPolicy: Always
+          ports: 
+            - containerPort: 5000
+      imagePullSecrets:
+        - name: regcred
