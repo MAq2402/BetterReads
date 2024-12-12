@@ -19,6 +19,7 @@ steps:
   displayName: 'Run a multi-line script'
 - task: DockerCompose@1
   inputs:
+    projectName: betterreads
     containerregistrytype: 'Azure Container Registry'
     azureSubscription: 'Płatność zgodnie z rzeczywistym użyciem(0c5e1aa1-1e9e-4789-99a8-51d3a3ce3bb9)'
     azureContainerRegistry: '{"loginServer":"betterreadsregistry.azurecr.io", "id" : "/subscriptions/0c5e1aa1-1e9e-4789-99a8-51d3a3ce3bb9/resourceGroups/BetterReads/providers/Microsoft.ContainerRegistry/registries/BetterReadsRegistry"}'
@@ -26,6 +27,7 @@ steps:
     action: 'Run a Docker Compose command'
 - task: DockerCompose@1
   inputs:
+    projectName: betterreads
     containerregistrytype: 'Azure Container Registry'
     azureSubscription: 'Płatność zgodnie z rzeczywistym użyciem(0c5e1aa1-1e9e-4789-99a8-51d3a3ce3bb9)'
     azureContainerRegistry: '{"loginServer":"betterreadsregistry.azurecr.io", "id" : "/subscriptions/0c5e1aa1-1e9e-4789-99a8-51d3a3ce3bb9/resourceGroups/BetterReads/providers/Microsoft.ContainerRegistry/registries/BetterReadsRegistry"}'
