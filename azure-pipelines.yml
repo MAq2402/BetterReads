@@ -35,3 +35,8 @@ steps:
     dockerComposeFile: '**/docker-compose-azure.yml'
     action: 'Push services'
     dockerComposeCommand: 'push'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/Deployment'
+    ArtifactName: 'Deployment'
+    publishLocation: 'Container'
