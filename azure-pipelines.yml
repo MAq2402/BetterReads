@@ -1,0 +1,33 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+- task: DockerCompose@1
+  inputs:
+    containerregistrytype: 'Azure Container Registry'
+    azureSubscription: 'Płatność zgodnie z rzeczywistym użyciem(0c5e1aa1-1e9e-4789-99a8-51d3a3ce3bb9)'
+    azureContainerRegistry: '{"loginServer":"betterreadsregistry.azurecr.io", "id" : "/subscriptions/0c5e1aa1-1e9e-4789-99a8-51d3a3ce3bb9/resourceGroups/BetterReads/providers/Microsoft.ContainerRegistry/registries/BetterReadsRegistry"}'
+    dockerComposeFile: '**/docker-compose-azure.yml'
+    action: 'Run a Docker Compose command'
+- task: DockerCompose@1
+  inputs:
+    containerregistrytype: 'Azure Container Registry'
+    azureSubscription: 'Płatność zgodnie z rzeczywistym użyciem(0c5e1aa1-1e9e-4789-99a8-51d3a3ce3bb9)'
+    azureContainerRegistry: '{"loginServer":"betterreadsregistry.azurecr.io", "id" : "/subscriptions/0c5e1aa1-1e9e-4789-99a8-51d3a3ce3bb9/resourceGroups/BetterReads/providers/Microsoft.ContainerRegistry/registries/BetterReadsRegistry"}'
+    dockerComposeFile: '**/docker-compose-azure.yml'
+    action: 'Push services'
