@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -9,6 +11,22 @@ builder.Services.AddOpenApi();
 
 builder.Configuration.AddJsonFile("ocelot.json");
 builder.Services.AddOcelot(builder.Configuration);
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer("CognitoKey", x =>
+    {
+        x.Authority = builder.Configuration["Cognito:Authority"];
+        x.MetadataAddress = builder.Configuration["Cognito:MetadataAddress"]!;
+        x.IncludeErrorDetails = true;
+        x.RequireHttpsMetadata = false;
+        x.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = false,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true
+        };
+    });
+builder.Services.AddAuthorizationBuilder();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
