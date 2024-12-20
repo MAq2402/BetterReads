@@ -8,7 +8,7 @@ services:
     image: betterreadsregistry.azurecr.io/auth:latest
     build:
       context: .
-      dockerfile: betterReads.Auth/betterReads.Auth.Web/Dockerfile
+      dockerfile: ./BetterReads.Auth/BetterReads.Auth.Web/Dockerfile
     ports: 
       - "5001:5001"
   books:
