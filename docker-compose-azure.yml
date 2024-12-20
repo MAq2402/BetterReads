@@ -6,7 +6,9 @@ services:
       - "5000:5000"
   auth:
     image: betterreadsregistry.azurecr.io/auth:latest
-    build: ./BetterReads.Auth/BetterReads.Auth.Web
+    build:
+      context: .
+      dockerfile: betterReads.Auth/betterReads.Auth.Web/Dockerfile
     ports: 
       - "5001:5001"
   books:
