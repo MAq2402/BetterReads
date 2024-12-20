@@ -24,6 +24,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BetterReads.ApiGateway", "B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterReads.ApiGateway.Web", "BetterReads.ApiGateway\BetterReads.ApiGateway.Web\BetterReads.ApiGateway.Web.csproj", "{18587A20-3C98-4E5B-905B-759661706681}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BetterReads.Shared", "BetterReads.Shared", "{3EB2DCB6-85DB-4449-B6DB-883FA555FA71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterReads.Auth.Application", "BetterReads.Auth\BetterReads.Auth.Application\BetterReads.Auth.Application.csproj", "{92DC146E-2515-412E-AD61-526FD388B452}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterReads.Shared.Application", "BetterReads.Shared\BetterReads.Shared.Application\BetterReads.Shared.Application.csproj", "{B1CC6AD2-D81D-44A2-BEDC-924A9C18173F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterReads.Auth.Infra", "BetterReads.Auth\BetterReads.Auth.Infra\BetterReads.Auth.Infra.csproj", "{E7E385B2-50EC-4A3E-A8F1-C9C67F67491C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterReads.Shared.Infra", "BetterReads.Shared\BetterReads.Shared.Infra\BetterReads.Shared.Infra.csproj", "{842F545A-90CC-4627-B349-EC76A49F210F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterReads.Shared.Web", "BetterReads.Shared\BetterReads.Shared.Web\BetterReads.Shared.Web.csproj", "{EF4B94AD-7298-46A9-A012-7FE4AECB8DF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +48,11 @@ Global
 		{67CB6B3A-0F96-4339-B7EE-0FD4F3FDDFB4} = {4E5FA1AA-F49B-4741-82DC-FAB429D22235}
 		{F973B2AE-6AC1-4D88-B3B4-9DB5CF93D3D8} = {39DAE573-0C67-4C13-968A-32AD9FAF1F7D}
 		{18587A20-3C98-4E5B-905B-759661706681} = {C44A87F8-3B79-4385-8037-5A0E19EDC8B3}
+		{92DC146E-2515-412E-AD61-526FD388B452} = {4E022F59-2B59-474C-AC22-38EC8201DB42}
+		{B1CC6AD2-D81D-44A2-BEDC-924A9C18173F} = {3EB2DCB6-85DB-4449-B6DB-883FA555FA71}
+		{E7E385B2-50EC-4A3E-A8F1-C9C67F67491C} = {4E022F59-2B59-474C-AC22-38EC8201DB42}
+		{842F545A-90CC-4627-B349-EC76A49F210F} = {3EB2DCB6-85DB-4449-B6DB-883FA555FA71}
+		{EF4B94AD-7298-46A9-A012-7FE4AECB8DF2} = {3EB2DCB6-85DB-4449-B6DB-883FA555FA71}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D3289D38-7119-400A-9820-43107A7A50F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -62,5 +79,25 @@ Global
 		{18587A20-3C98-4E5B-905B-759661706681}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18587A20-3C98-4E5B-905B-759661706681}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18587A20-3C98-4E5B-905B-759661706681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92DC146E-2515-412E-AD61-526FD388B452}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92DC146E-2515-412E-AD61-526FD388B452}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92DC146E-2515-412E-AD61-526FD388B452}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92DC146E-2515-412E-AD61-526FD388B452}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1CC6AD2-D81D-44A2-BEDC-924A9C18173F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1CC6AD2-D81D-44A2-BEDC-924A9C18173F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1CC6AD2-D81D-44A2-BEDC-924A9C18173F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1CC6AD2-D81D-44A2-BEDC-924A9C18173F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7E385B2-50EC-4A3E-A8F1-C9C67F67491C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7E385B2-50EC-4A3E-A8F1-C9C67F67491C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7E385B2-50EC-4A3E-A8F1-C9C67F67491C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7E385B2-50EC-4A3E-A8F1-C9C67F67491C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{842F545A-90CC-4627-B349-EC76A49F210F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{842F545A-90CC-4627-B349-EC76A49F210F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{842F545A-90CC-4627-B349-EC76A49F210F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{842F545A-90CC-4627-B349-EC76A49F210F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF4B94AD-7298-46A9-A012-7FE4AECB8DF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF4B94AD-7298-46A9-A012-7FE4AECB8DF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF4B94AD-7298-46A9-A012-7FE4AECB8DF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF4B94AD-7298-46A9-A012-7FE4AECB8DF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
