@@ -1,5 +1,6 @@
 ﻿using BetterReads.Auth.Application.Contracts;
 using BetterReads.Auth.Application.Dtos;
+using BetterReads.Auth.Application.Exceptions;
 using MediatR;
 namespace BetterReads.Auth.Application.Commands;
 
@@ -13,7 +14,7 @@ public class LoginCommandHandler(IIdentityService identityService) : IRequestHan
 
         if (result is null)
         {
-            throw new ApplicationException("Failed to login with given code.");
+            throw new UnauthorizedException("Failed to login with given code.");
         }
 
         return result;

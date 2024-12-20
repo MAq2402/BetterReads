@@ -11,12 +11,11 @@ builder.Services.AddOpenApi();
 
 builder.Configuration.AddJsonFile("ocelot.json");
 builder.Services.AddOcelot(builder.Configuration);
-const string AuthenticationProviderKey = "MyKey";
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(AuthenticationProviderKey, x =>
+    .AddJwtBearer("CognitoKey", x =>
     {
-        x.Authority = "https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_peIhKxYwJ";
-        x.MetadataAddress = "https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_peIhKxYwJ/.well-known/openid-configuration";
+        x.Authority = builder.Configuration["Cognito:Authority"];
+        x.MetadataAddress = builder.Configuration["Cognito:MetadataAddress"]!;
         x.IncludeErrorDetails = true;
         x.RequireHttpsMetadata = false;
         x.TokenValidationParameters = new TokenValidationParameters

@@ -36,7 +36,7 @@
       "UpstreamPathTemplate": "/books",
       "UpstreamHttpMethod": [ "Get" ],
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "MyKey",
+        "AuthenticationProviderKey": "CognitoKey",
         "AllowedScopes": []
       }
     },
@@ -52,7 +52,7 @@
       "UpstreamPathTemplate": "/recommendations",
       "UpstreamHttpMethod": [ "Get" ],
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "MyKey",
+        "AuthenticationProviderKey": "CognitoKey",
         "AllowedScopes": []
       }
     },
@@ -68,7 +68,7 @@
       "UpstreamPathTemplate": "/reviews",
       "UpstreamHttpMethod": [ "Get" ],
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "MyKey",
+        "AuthenticationProviderKey": "CognitoKey",
         "AllowedScopes": []
       }
     },
@@ -84,7 +84,7 @@
       "UpstreamPathTemplate": "/shelves",
       "UpstreamHttpMethod": [ "Get" ],
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "MyKey",
+        "AuthenticationProviderKey": "CognitoKey",
         "AllowedScopes": []
       }
     }
