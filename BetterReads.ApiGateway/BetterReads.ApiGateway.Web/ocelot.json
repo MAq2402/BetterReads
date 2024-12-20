@@ -13,6 +13,18 @@
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
+      "DownstreamPathTemplate": "/login/{code}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/login/{code}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
       "DownstreamPathTemplate": "/hello-world",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -22,7 +34,11 @@
         }
       ],
       "UpstreamPathTemplate": "/books",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "MyKey",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/hello-world",
@@ -34,7 +50,11 @@
         }
       ],
       "UpstreamPathTemplate": "/recommendations",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "MyKey",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/hello-world",
@@ -46,7 +66,11 @@
         }
       ],
       "UpstreamPathTemplate": "/reviews",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "MyKey",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/hello-world",
@@ -58,7 +82,11 @@
         }
       ],
       "UpstreamPathTemplate": "/shelves",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "MyKey",
+        "AllowedScopes": []
+      }
     }
   ],
   "GlobalConfiguration": {
