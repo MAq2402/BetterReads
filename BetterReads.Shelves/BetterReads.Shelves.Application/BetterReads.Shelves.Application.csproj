@@ -6,4 +6,13 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\BetterReads.Shared\BetterReads.Shared.Application\BetterReads.Shared.Application.csproj" />
+      <ProjectReference Include="..\BetterReads.Shelves.Domain\BetterReads.Shelves.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Exceptions\" />
+    </ItemGroup>
+
 </Project>

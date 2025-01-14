@@ -7,11 +7,11 @@ ENV ASPNETCORE_ENVIRONMENT docker
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 COPY . .
-RUN dotnet restore "BetterReads.Shelves.Web.csproj"
-RUN dotnet build "BetterReads.Shelves.Web.csproj" -c Release -o /app/build
+RUN dotnet restore "BetterReads.Shelves/BetterReads.Shelves.Web/BetterReads.Shelves.Web.csproj"
+RUN dotnet build "BetterReads.Shelves/BetterReads.Shelves.Web/BetterReads.Shelves.Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "BetterReads.Shelves.Web.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "BetterReads.Shelves/BetterReads.Shelves.Web/BetterReads.Shelves.Web.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app

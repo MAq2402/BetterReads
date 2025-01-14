@@ -10,4 +10,8 @@
       <ProjectReference Include="..\..\BetterReads.Shared\BetterReads.Shared.Application\BetterReads.Shared.Application.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Exceptions\" />
+    </ItemGroup>
+
 </Project>

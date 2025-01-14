@@ -26,7 +26,7 @@ internal sealed class MongoRepository<TDocument, TId> : IMongoRepository<TDocume
         await _collection.InsertOneAsync(document);
     }
 
-    public async Task<TDocument> Get(TId id)
+    public async Task<TDocument?> Get(TId id)
     {
         return (await _collection.FindAsync(x => x.Id.Equals(id))).FirstOrDefault();
     }

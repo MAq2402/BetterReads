@@ -6,7 +6,7 @@ public interface IMongoRepository<TDocument, in TId> where TDocument : IMongoDoc
     where TId : IEquatable<TId>
 {
     Task Add(TDocument document);
-    Task<TDocument> Get(TId id);
+    Task<TDocument?> Get(TId id);
     Task<IEnumerable<TDocument>> GetAll();
     Task Save(TDocument document);
 }

@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using System.Security.Claims;
+using BetterReads.Shared.Application.Dtos;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 
@@ -29,5 +31,36 @@ public static class WebApplicationExtensions
     {
         return app.MapGet(pattern, async (IMediator mediator, [AsParameters] TRequest request) => await mediator.Send(request))
             .WithOpenApi();
+    }
+    
+    public static RouteHandlerBuilder MediatorMapPostRequireAuthorization<T>(this WebApplication app, string pattern)
+        where T : ModifyDto
+    {
+        return app.MapPost(pattern, async (IMediator mediator, T request, ClaimsPrincipal user) =>
+                await mediator.Send(request.ToCommand(GetUserId(user)))
+            )
+            .WithOpenApi()
+            .RequireAuthorization();
+    }
+
+    public static RouteHandlerBuilder MediatorMapPutRequireAuthorization<T>(this WebApplication app, string pattern)
+        where T : ModifyDto
+    {
+        return app.MapPut(pattern,
+                async (IMediator mediator, T request, ClaimsPrincipal user) =>
+                    await mediator.Send(request.ToCommand(GetUserId(user))))
+            .WithOpenApi()
+            .RequireAuthorization();
+    }
+    
+    public static Guid GetUserId(this ClaimsPrincipal user)
+    {
+        var userId = user.FindFirst("username")?.Value;
+        if (string.IsNullOrEmpty(userId))
+        {
+            throw new UnauthorizedAccessException("User is not authorized");
+        }
+
+        return Guid.Parse(userId);
     }
 }

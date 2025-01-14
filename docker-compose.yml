@@ -28,6 +28,8 @@ services:
       - "5004:5004"
   shelves:
     image: shelves
-    build: ./BetterReads.Shelves/BetterReads.Shelves.Web
+    build:
+      context: .
+      dockerfile: betterReads.Shelves/betterReads.Shelves.Web/Dockerfile
     ports: 
       - "5005:5005"

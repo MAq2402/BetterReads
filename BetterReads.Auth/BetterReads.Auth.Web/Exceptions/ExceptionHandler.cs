@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using BetterReads.Auth.Application.Exceptions;
+using BetterReads.Shared.Application.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 
 namespace BetterReads.Auth.Web.Exceptions;

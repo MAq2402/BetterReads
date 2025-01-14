@@ -17,4 +17,11 @@
       </Content>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\BetterReads.Shared\BetterReads.Shared.Infra\BetterReads.Shared.Infra.csproj" />
+      <ProjectReference Include="..\..\BetterReads.Shared\BetterReads.Shared.Web\BetterReads.Shared.Web.csproj" />
+      <ProjectReference Include="..\BetterReads.Shelves.Application\BetterReads.Shelves.Application.csproj" />
+      <ProjectReference Include="..\BetterReads.Shelves.Infra\BetterReads.Shelves.Infra.csproj" />
+    </ItemGroup>
+
 </Project>

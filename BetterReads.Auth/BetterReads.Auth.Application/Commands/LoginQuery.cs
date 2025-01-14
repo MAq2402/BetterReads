@@ -1,6 +1,6 @@
 ﻿using BetterReads.Auth.Application.Contracts;
 using BetterReads.Auth.Application.Dtos;
-using BetterReads.Auth.Application.Exceptions;
+using BetterReads.Shared.Application.Exceptions;
 using MediatR;
 namespace BetterReads.Auth.Application.Commands;
 

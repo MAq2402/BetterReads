@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\BetterReads.Shared\BetterReads.Shared.Domain\BetterReads.Shared.Domain.csproj" />
+    </ItemGroup>
+
 </Project>

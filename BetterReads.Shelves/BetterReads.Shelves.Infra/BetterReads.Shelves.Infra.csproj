@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\BetterReads.Shared\BetterReads.Shared.Infra\BetterReads.Shared.Infra.csproj" />
+      <ProjectReference Include="..\BetterReads.Shelves.Domain\BetterReads.Shelves.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
