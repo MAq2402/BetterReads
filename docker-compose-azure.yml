@@ -1,7 +1,9 @@
 services:
   api-gateway:
     image: betterreadsregistry.azurecr.io/api-gateway:latest
-    build: ./BetterReads.ApiGateway/BetterReads.ApiGateway.Web
+    build:
+      context: .
+      dockerfile: ./BetterReads.ApiGateway/BetterReads.ApiGateway.Web/Dockerfile
     ports: 
       - "5000:5000"
   auth:

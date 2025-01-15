@@ -1,7 +1,9 @@
 services:
   api-gateway:
     image: api-gateway
-    build: ./BetterReads.ApiGateway/BetterReads.ApiGateway.Web
+    build:
+      context: .
+      dockerfile: betterReads.ApiGateway/betterReads.ApiGateway.Web/Dockerfile
     ports: 
       - "5000:5000"
   auth:
