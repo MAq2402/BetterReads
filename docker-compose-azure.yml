@@ -30,6 +30,6 @@ services:
     image: betterreadsregistry.azurecr.io/shelves:latest
     build:
       context: .
-      dockerfile: betterReads.Shelves/betterReads.Shelves.Web/Dockerfile
+      dockerfile: ./BetterReads.Shelves/betterReads.Shelves.Web/Dockerfile
     ports: 
       - "5005:5005"
