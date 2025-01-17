@@ -35,3 +35,11 @@ services:
       dockerfile: betterReads.Shelves/betterReads.Shelves.Web/Dockerfile
     ports: 
       - "5005:5005"
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    volumes: 
+      - ~/mongo/data:/data/db
+    command: mongod --quiet --logpath /dev/null 

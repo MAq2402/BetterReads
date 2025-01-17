@@ -1,4 +1,5 @@
-﻿using BetterReads.Shared.Infra.Repositories;
+﻿using BetterReads.Shared.Domain.Base;
+using BetterReads.Shared.Infra.Repositories;
 using BetterReads.Shelves.Domain;
 using BetterReads.Shelves.Domain.Repositories;
 using BetterReads.Shelves.Infra.Mongo.Documents;
@@ -13,7 +14,7 @@ public class MongoShelvesRepository(IMongoRepository<ShelfDocument, Guid> reposi
         await repository.Add(shelf.AsDocument());
     }
 
-    public async Task<Shelf?> Get(Guid id, Guid userId)
+    public async Task<Shelf?> Get(AggregateId id, Guid userId)
     {
         var shelf = await repository.Get(id);
 

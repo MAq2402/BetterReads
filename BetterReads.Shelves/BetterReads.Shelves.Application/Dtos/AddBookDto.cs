@@ -5,7 +5,7 @@ using MediatR;
 
 namespace BetterReads.Shelves.Application.Dtos;
 
-public class CreateBookDto : ModifyDto
+public class AddBookDto : ModifyDto
 {
     public string Name { get; set; } = string.Empty;
     public string Author { get; set; } = string.Empty;

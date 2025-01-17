@@ -6,7 +6,7 @@ namespace BetterReads.Shelves.Domain;
 
 public class Shelf : AggregateRoot
 {
-    private readonly List<Book> _books;
+    private readonly List<Book> _books = new List<Book>();
     public Shelf(AggregateId id, string name, Guid userId) : base(id)
     {
         Name = name;

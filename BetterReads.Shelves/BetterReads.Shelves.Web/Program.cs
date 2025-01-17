@@ -31,11 +31,11 @@ app.MapGet("/hello-world", () => "Hello world From Shelves Service")
 
 app.MediatorMapPostRequireAuthorization<CreateShelfDto>("/shelves");
 
-app.MapGet("/sheleves/{id}", async (IMediator mediator, Guid id, ClaimsPrincipal user) => await mediator.Send(
+app.MediatorMapPostRequireAuthorization<AddBookDto>("/shelves/books");
+
+app.MapGet("/shelves/{id}", async (IMediator mediator, Guid id, ClaimsPrincipal user) => await mediator.Send(
         new GetShelf(user.GetUserId(), id)))
     .WithOpenApi()
     .RequireAuthorization();
-
-app.MediatorMapPostRequireAuthorization<CreateBookDto>("/shelves");
 
 app.Run();

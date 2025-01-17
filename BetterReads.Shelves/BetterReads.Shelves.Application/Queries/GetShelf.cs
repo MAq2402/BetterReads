@@ -12,7 +12,7 @@ public class GetShelfHandler(IShelvesRepository shelvesRepository) : IRequestHan
 {
     public async Task<ShelfDto> Handle(GetShelf request, CancellationToken cancellationToken)
     {
-        var shelf = await shelvesRepository.Get(request.UserId, request.ShelfId);
+        var shelf = await shelvesRepository.Get(request.ShelfId, request.UserId);
 
         if (shelf == null)
         {
