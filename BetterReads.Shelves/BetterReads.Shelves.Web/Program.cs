@@ -38,4 +38,8 @@ app.MapGet("/shelves/{id}", async (IMediator mediator, Guid id, ClaimsPrincipal 
     .WithOpenApi()
     .RequireAuthorization();
 
+app.MapGet("/users/{userId}/shelves", async (IMediator mediator, Guid userId) => await mediator.Send(
+        new GetShelves(userId)))
+    .WithOpenApi();
+
 app.Run();

@@ -1,6 +1,6 @@
 @BetterReads.Recommendations.Web_HostAddress = http://localhost:5178
 
-GET {{BetterReads.Recommendations.Web_HostAddress}}/weatherforecast/
+PUT {{BetterReads.Recommendations.Web_HostAddress}}/recommendations/
 Accept: application/json
-
+Authorization: Bearer {token}
 ###

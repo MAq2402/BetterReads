@@ -11,7 +11,7 @@ public class AddShelfHandler(IShelvesRepository repository) : IRequestHandler<Ad
 {
     public async Task Handle(AddShelf request, CancellationToken cancellationToken)
     {
-        var shelves = await repository.GetAll(request.UserId);
+        var shelves = await repository.GetMany(request.UserId);
 
         if (shelves.Any(x => x.Name == request.Name))
         {

@@ -40,4 +40,14 @@ internal sealed class MongoRepository<TDocument, TId> : IMongoRepository<TDocume
     {
         await _collection.ReplaceOneAsync(x => x.Id.Equals(document.Id) && x.Version < document.Version, document);
     }
+
+    public async Task<TDocument?> Get(FilterDefinition<TDocument> filter)
+    {
+        return (await _collection.FindAsync(filter)).FirstOrDefault();
+    }
+
+    public async Task<List<TDocument>> GetMany(FilterDefinition<TDocument> filter)
+    {
+        return (await _collection.FindAsync(filter)).ToList();
+    }
 }

@@ -41,7 +41,7 @@
       }
     },
     {
-      "DownstreamPathTemplate": "/hello-world",
+      "DownstreamPathTemplate": "/recommendations",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -50,7 +50,7 @@
         }
       ],
       "UpstreamPathTemplate": "/recommendations",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [ "Get", "Put" ],
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "CognitoKey",
         "AllowedScopes": []

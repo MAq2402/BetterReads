@@ -1,8 +1,8 @@
 @host = http://localhost:5000/
 @contentType = application/json
 
-@code = 5ae96e8d-6461-47af-8c72-aadbd9fa5b84
-@token = eyJraWQiOiJEOGZJQmY1N2VTNzAyaWp5XC8xbzRuXC81YU14dVJBQUw0QUZpSkhTcGVlNEk9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJmNjMyZjI2NC00MGMxLTcwZDAtMjdlNC0zOWM1MmRlMjllYWIiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0yLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMl9wZUloS3hZd0oiLCJ2ZXJzaW9uIjoyLCJjbGllbnRfaWQiOiI3Y3RibmtjM2U5NjgyYjN1ZzVmMWdwdjFldiIsIm9yaWdpbl9qdGkiOiIzODYyMDNmYi1iNzY5LTRmZWYtYTFhOC0yOTk1ODdiMGVhYWYiLCJldmVudF9pZCI6IjllNWJlYWU5LTA1ZWUtNDdkMy05ZDMyLTYxNzhkMGUxZWNlYSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoicGhvbmUgb3BlbmlkIGVtYWlsIiwiYXV0aF90aW1lIjoxNzM3MDU5OTU3LCJleHAiOjE3MzcwNjM1NTcsImlhdCI6MTczNzA1OTk1NywianRpIjoiNGYyMmJmNzEtMWYzMi00YTM5LWI1ZjAtZDJjYzIxMDY1ZjFhIiwidXNlcm5hbWUiOiJmNjMyZjI2NC00MGMxLTcwZDAtMjdlNC0zOWM1MmRlMjllYWIifQ.T_kzfIcz49OmPvFwm-SUZWQJtDKGRqQ494mJ9hR2LvAiJXjQ5sMCdJdU7zB7Bp__3qQao19EVq5f6SFTT_F2jyc413nh24vkcnS-DJrFTdeyQnkuEWCkAoAHmrrnwvXv7MJQuoSDlKzAZZX0e3kj7mqzpNgtl12JCyZmb6xh4hIh8c8Pnc2SM75VJMy-nYVysUQceR3oULTSc46XHIpukRk9A51fjeFXhTlhuCNc-y6O2wluhrpQH1nAPTIcnkkeXlU1_35wkL658CC_Z6ax18OjQRlZhaHsYcOFA6cjnv6vZZ175s8271AYXbr5gRyoYMgu6fj4BQLOLe7qIDVv8Q
+@code = f709c1da-9d24-45fe-b84a-ff99be08ae9b
+@token = eyJraWQiOiJEOGZJQmY1N2VTNzAyaWp5XC8xbzRuXC81YU14dVJBQUw0QUZpSkhTcGVlNEk9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJmNjMyZjI2NC00MGMxLTcwZDAtMjdlNC0zOWM1MmRlMjllYWIiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0yLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMl9wZUloS3hZd0oiLCJ2ZXJzaW9uIjoyLCJjbGllbnRfaWQiOiI3Y3RibmtjM2U5NjgyYjN1ZzVmMWdwdjFldiIsIm9yaWdpbl9qdGkiOiI0ZjZlM2EzNy1iNDU2LTRkZDMtYTBkNC1hYTJmZmZiZDk2OTEiLCJldmVudF9pZCI6IjllNjg1OTU2LTYzYmItNGUyOC1hYmE3LTJmM2MwNWM5MjlhZCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoicGhvbmUgb3BlbmlkIGVtYWlsIiwiYXV0aF90aW1lIjoxNzM4MDU1MTgwLCJleHAiOjE3MzgwNTg3ODAsImlhdCI6MTczODA1NTE4MCwianRpIjoiNTUwNDA4ZjUtODY1MS00YWFmLWIxMjUtYTY4Njk0MGFiYWJkIiwidXNlcm5hbWUiOiJmNjMyZjI2NC00MGMxLTcwZDAtMjdlNC0zOWM1MmRlMjllYWIifQ.WFQPOU5mDJWOZGeqCehFDc2U1trxAMDnQkw5hPKS_ZiziSk4z07alpTelU1kE8q-YzGckMHPhqxjhHOwaDYJZZUII2lgDQZpkC2WlmQvgoVaJG6vJka8nmHpyVcIO1hhdEfnQHwQi7hiTNvfiRvYBDslWWmeyH96HQ9T8Ekzu-cOHhC0CPspjr64PQ0JCWA6Y1y24R0guQ8YDk35HaJIJvIY5enQkcg1Snu35ZBhzPdAVNZv4_XDEzpaeHHSpNmq9ilO8RI1_mUJtL2lTPqMdqtkC8HSuu3QWuwcAoydkaIKgNmRtWLemZWFkJklSL2OjXvh60f823J8L8EqpgfozQ
 
 
 GET {{host}}login/{{code}} HTTP/1.1
@@ -24,8 +24,8 @@ Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "Name": "Test",
-    "Author": "Author",
+    "Name": "Crime And Punishment",
+    "Author": "Fyodor Dostoyevsky",
     "Isbn": "12345",
     "Language": "Polish",
     "YearOfPublication": 1955,
@@ -33,4 +33,11 @@ content-type: application/json
 }
 
 GET {{host}}shelves/{{shelfId}} HTTP/1.1
+Authorization: Bearer {{token}}
+
+
+PUT {{host}}recommendations HTTP/1.1
+Authorization: Bearer {{token}}
+
+GET {{host}}recommendations HTTP/1.1
 Authorization: Bearer {{token}}

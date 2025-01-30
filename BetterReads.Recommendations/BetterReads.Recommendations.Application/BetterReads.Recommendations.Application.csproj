@@ -8,11 +8,15 @@
 
     <ItemGroup>
       <PackageReference Include="MediatR" Version="12.4.1" />
-      <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BetterReads.Shared.Domain\BetterReads.Shared.Domain.csproj" />
+      <ProjectReference Include="..\BetterReads.Recommendations.Domain\BetterReads.Recommendations.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Exceptions\" />
     </ItemGroup>
 
 </Project>

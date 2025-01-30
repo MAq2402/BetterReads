@@ -4,6 +4,7 @@ using BetterReads.Shelves.Domain;
 using BetterReads.Shelves.Domain.Repositories;
 using BetterReads.Shelves.Infra.Mongo.Documents;
 using BetterReads.Shelves.Infra.Mongo.Mappings;
+using MongoDB.Driver;
 
 namespace BetterReads.Shelves.Infra.Mongo.Repositories;
 
@@ -31,9 +32,9 @@ public class MongoShelvesRepository(IMongoRepository<ShelfDocument, Guid> reposi
         return (await repository.Get(id))?.AsEntity() ?? null;
     }
 
-    public async Task<List<Shelf>> GetAll(Guid userId)
+    public async Task<List<Shelf>> GetMany(Guid userId)
     {
-        return (await repository.GetAll()).Where(x => x.UserId == userId).Select(x => x.AsEntity()).ToList();
+        return (await repository.GetMany(Builders<ShelfDocument>.Filter.Eq("UserId", userId))).Select(x => x.AsEntity()).ToList();
     }
 
     public async Task Save(Shelf shelf)

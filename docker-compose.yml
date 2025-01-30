@@ -20,7 +20,9 @@ services:
       - "5002:5002"
   recommendations:
     image: recommendations
-    build: ./BetterReads.Recommendations/BetterReads.Recommendations.Web
+    build:
+      context: .
+      dockerfile: betterReads.Recommendations/betterReads.Recommendations.Web/Dockerfile
     ports: 
       - "5003:5003"
   reviews:
