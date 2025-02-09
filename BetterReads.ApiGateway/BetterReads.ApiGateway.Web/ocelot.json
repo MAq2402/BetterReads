@@ -25,7 +25,7 @@
       "UpstreamHttpMethod": [ "Get" ]
     },
     {
-      "DownstreamPathTemplate": "/hello-world",
+      "DownstreamPathTemplate": "/books",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -34,11 +34,7 @@
         }
       ],
       "UpstreamPathTemplate": "/books",
-      "UpstreamHttpMethod": [ "Get" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "CognitoKey",
-        "AllowedScopes": []
-      }
+      "UpstreamHttpMethod": [ "Get" ]
     },
     {
       "DownstreamPathTemplate": "/recommendations",
