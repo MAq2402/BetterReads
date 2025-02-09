@@ -18,7 +18,9 @@ public class BookDocument
     [JsonPropertyName("edition_count")] public int EditionCount { get; set; }
     [JsonPropertyName("title")] public string? Title { get; set; }
     [JsonPropertyName("author_name")] public List<string> AuthorName { get; set; } = [];
-    [JsonPropertyName("first_publish_year")] public int? FirstPublishYear { get; set; }
+
+    [JsonPropertyName("first_publish_year")]
+    public int? FirstPublishYear { get; set; }
 
     [JsonPropertyName("key")] public string? Key { get; set; }
 

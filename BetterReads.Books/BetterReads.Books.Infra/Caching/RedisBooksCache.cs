@@ -29,6 +29,13 @@ public class RedisBooksCache(IDistributedCache distributedCache, ILogger<RedisBo
 
     public async Task Set(string key, List<Book> value)
     {
-        await distributedCache.SetStringAsync(key, JsonConvert.SerializeObject(value));
+        try
+        {
+            await distributedCache.SetStringAsync(key, JsonConvert.SerializeObject(value));
+        }
+        catch (Exception ex)
+        {
+            logger.LogError("Failed to set books in the cache. Exception: {ex}", ex);
+        }
     }
 }
