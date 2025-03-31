@@ -20,6 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\BetterReads.Shared\BetterReads.Shared.Web\BetterReads.Shared.Web.csproj" />
+      <ProjectReference Include="..\BetterReads.Books.Application\BetterReads.Books.Application.csproj" />
       <ProjectReference Include="..\BetterReads.Books.Infra\BetterReads.Books.Infra.csproj" />
     </ItemGroup>
 
