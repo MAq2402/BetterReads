@@ -1,8 +1,11 @@
-📚 BetterReads
-BetterReads is a modular, microservices-based application designed to enhance your reading experience. It allows users to manage bookshelves, write reviews, receive personalized recommendations, and more.
-It is a personal project to improve tech skils.
 
-🚀 Features
+# 📚 BetterReads
+BetterReads is a modular, microservices-based application designed to enhance your reading experience. It allows users to manage bookshelves, write reviews, receive personalized recommendations, and more.
+It is a personal project to improve tech skills.
+
+---
+
+## 🚀 Features
 Bookshelf Management: Organize your reading list with custom shelves.
 
 Book Reviews: Share your thoughts and read others' opinions.
@@ -15,7 +18,9 @@ API Gateway: Centralized entry point for all services.
 
 Microservices Architecture: Each feature is a separate, scalable service.
 
-🧱 Project Structure
+---
+
+## 🧱 Project Structure
 The solution is divided into several projects:
 
 BetterReads.ApiGateway: Handles routing and acts as the entry point for all services.
@@ -32,7 +37,9 @@ BetterReads.Shelves: Manages user-created bookshelves.
 
 BetterReads.Shared: Contains shared models and utilities used across services.
 
-🛠️ Technologies Used
+---
+
+## 🛠️ Technologies Used
 .NET 9: Core framework for building the application.
 
 ASP.NET Core: Web framework for building APIs.
