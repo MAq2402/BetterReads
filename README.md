@@ -6,8 +6,6 @@ It is a personal project to improve tech skills.
 ---
 
 ## 🛠️ Technologies Used
-.NET 9: Core framework for building the application.
-
 - ASP.NET Core: Web framework for building APIs.
 
 - Entity Framework Core: Object-relational mapper for database interactions.
