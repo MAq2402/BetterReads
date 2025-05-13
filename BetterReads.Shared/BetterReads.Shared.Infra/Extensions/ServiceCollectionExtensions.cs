@@ -1,5 +1,7 @@
 ﻿using Azure.Identity;
+using BetterReads.Shared.Application.Services;
 using BetterReads.Shared.Infra.Repositories;
+using BetterReads.Shared.Infra.Services;
 using BetterReads.Shared.Infra.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
@@ -50,6 +52,13 @@ public static class ServiceCollectionExtensions
                 };
             });
         services.AddAuthorizationBuilder();
+        
+        return services;
+    }
+
+    public static IServiceCollection AddMassTransitPublisher(this IServiceCollection services)
+    {
+        services.AddScoped<IIntegrationEventPublisher, MassTransitIntegrationEventPublisher>();
         
         return services;
     }

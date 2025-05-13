@@ -53,7 +53,7 @@ public class UpdateRecommendationsCommandHandler(
         }
         else
         {
-            recommendation.UpdateBooks(newAiRecommendation.Select(x => new Book(x.Author, x.Author, x.Isbn)).ToList());
+            recommendation.UpdateBooks(newAiRecommendation.Select(x => new Book(x.Title, x.Author, x.Isbn)).ToList());
             await repository.Save(recommendation);
         }
     }
