@@ -1,13 +1,13 @@
 @host = http://localhost:5000/
 @contentType = application/json
 
-@code = f709c1da-9d24-45fe-b84a-ff99be08ae9b
-@token = eyJraWQiOiJEOGZJQmY1N2VTNzAyaWp5XC8xbzRuXC81YU14dVJBQUw0QUZpSkhTcGVlNEk9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJmNjMyZjI2NC00MGMxLTcwZDAtMjdlNC0zOWM1MmRlMjllYWIiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0yLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMl9wZUloS3hZd0oiLCJ2ZXJzaW9uIjoyLCJjbGllbnRfaWQiOiI3Y3RibmtjM2U5NjgyYjN1ZzVmMWdwdjFldiIsIm9yaWdpbl9qdGkiOiI0ZjZlM2EzNy1iNDU2LTRkZDMtYTBkNC1hYTJmZmZiZDk2OTEiLCJldmVudF9pZCI6IjllNjg1OTU2LTYzYmItNGUyOC1hYmE3LTJmM2MwNWM5MjlhZCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoicGhvbmUgb3BlbmlkIGVtYWlsIiwiYXV0aF90aW1lIjoxNzM4MDU1MTgwLCJleHAiOjE3MzgwNTg3ODAsImlhdCI6MTczODA1NTE4MCwianRpIjoiNTUwNDA4ZjUtODY1MS00YWFmLWIxMjUtYTY4Njk0MGFiYWJkIiwidXNlcm5hbWUiOiJmNjMyZjI2NC00MGMxLTcwZDAtMjdlNC0zOWM1MmRlMjllYWIifQ.WFQPOU5mDJWOZGeqCehFDc2U1trxAMDnQkw5hPKS_ZiziSk4z07alpTelU1kE8q-YzGckMHPhqxjhHOwaDYJZZUII2lgDQZpkC2WlmQvgoVaJG6vJka8nmHpyVcIO1hhdEfnQHwQi7hiTNvfiRvYBDslWWmeyH96HQ9T8Ekzu-cOHhC0CPspjr64PQ0JCWA6Y1y24R0guQ8YDk35HaJIJvIY5enQkcg1Snu35ZBhzPdAVNZv4_XDEzpaeHHSpNmq9ilO8RI1_mUJtL2lTPqMdqtkC8HSuu3QWuwcAoydkaIKgNmRtWLemZWFkJklSL2OjXvh60f823J8L8EqpgfozQ
+@code = b4047ba6-27a3-4e02-99b9-59f3bdf5bb11
+@token = eyJraWQiOiJEOGZJQmY1N2VTNzAyaWp5XC8xbzRuXC81YU14dVJBQUw0QUZpSkhTcGVlNEk9IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJmNjMyZjI2NC00MGMxLTcwZDAtMjdlNC0zOWM1MmRlMjllYWIiLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuZXUtd2VzdC0yLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMl9wZUloS3hZd0oiLCJ2ZXJzaW9uIjoyLCJjbGllbnRfaWQiOiI3Y3RibmtjM2U5NjgyYjN1ZzVmMWdwdjFldiIsIm9yaWdpbl9qdGkiOiI4NjFlYTY0Ni03NGViLTRmNDEtYTVjNS05N2E3M2UzY2EzMDciLCJldmVudF9pZCI6ImYyNzIzYTFhLTdlNjQtNDI3NS05ZjQ1LTJkMTUzMjg0ZTE0NCIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoicGhvbmUgb3BlbmlkIGVtYWlsIiwiYXV0aF90aW1lIjoxNzQ3MTUwNTAyLCJleHAiOjE3NDcxNTQxMDIsImlhdCI6MTc0NzE1MDUwMiwianRpIjoiZDY5ZDQ5NzAtNDQ1ZS00YzY5LWIwMzEtNjkwYWFjZWY5ZWU4IiwidXNlcm5hbWUiOiJmNjMyZjI2NC00MGMxLTcwZDAtMjdlNC0zOWM1MmRlMjllYWIifQ.ukHEcsBJiTVE1WpK6woFlfVwYW9N090kuqcfBA3ToLPs2IxbhjWC-Wc1S37fZ-FIZN8MPlGYbe9oojxeCCVPBUSNUS6YvOW6wpFCYapXhw8_7KXUF-PAGTSZwWQRGZ9nfbjbnU8Im_qiO3yasPpAjhmTdrdYhpxLHj_VTBewx8DywcWKfLLkIe3uF1ZQo2iXgPL2_PGGCIkJeel_lnpRtiaq6StHd1z_WgTW9uoXwDbtCWMYPn9zof3JvNxKhL3b6yx6jfGX-zBfonK4_n8FugTtu9OUO-eXK-q6bBwanSWUbjPFfkmHrASpaOlnrX0mz5tQ_nhOhcDwF6OoRocfPA
 
 
 GET {{host}}login/{{code}} HTTP/1.1
 
-GET {{host}}books HTTP/1.1
+GET {{host}}books?searchQuery=Witcher HTTP/1.1
 Authorization: Bearer {{token}}
 
 POST {{host}}shelves HTTP/1.1
@@ -18,18 +18,18 @@ content-type: application/json
     "Name": "Test"
 }
 
-@shelfId = afb1491f-0b94-40c9-8a5e-2e8d7730aabb
+@shelfId = 49eb8656-cafc-4a75-8f95-68df52eb3f83
 POST {{host}}shelves/books HTTP/1.1
 Authorization: Bearer {{token}}
 content-type: application/json
 
 {
-    "Name": "Crime And Punishment",
+    "Name": "The Idiot",
     "Author": "Fyodor Dostoyevsky",
     "Isbn": "12345",
     "Language": "Polish",
     "YearOfPublication": 1955,
-    "ShelfId": "afb1491f-0b94-40c9-8a5e-2e8d7730aabb"
+    "ShelfId": "49eb8656-cafc-4a75-8f95-68df52eb3f83"
 }
 
 GET {{host}}shelves/{{shelfId}} HTTP/1.1
