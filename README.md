@@ -22,6 +22,8 @@ It is a personal project to improve tech skills.
 - Ocelot: API Gateway
 - MediatR: CQRS
 - MongoDB: Storing data
+- Azure Service Bus - For communication between decoupled services using asynchronous messaging
+- Azure OpenAI - Getting current book recommendations
 
 ---
 
