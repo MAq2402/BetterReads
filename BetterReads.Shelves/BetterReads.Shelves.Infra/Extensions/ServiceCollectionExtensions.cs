@@ -14,6 +14,7 @@ public static class ServiceCollectionExtensions
         services.AddCognitoJwtAuth(configuration);
         services.AddMongo(configuration);
         services.AddSingleton<IShelvesRepository, MongoShelvesRepository>();
+        services.AddMassTransitPublisher();
         return services;
     }
 }
