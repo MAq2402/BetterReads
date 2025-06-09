@@ -2,7 +2,7 @@
 using BetterReads.Auth.Application.Dtos;
 using BetterReads.Shared.Application.Exceptions;
 using MediatR;
-namespace BetterReads.Auth.Application.Commands;
+namespace BetterReads.Auth.Application.Queries;
 
 public record LoginQuery(string Code) : IRequest<LoginResponse>;
 

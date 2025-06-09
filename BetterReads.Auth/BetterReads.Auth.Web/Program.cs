@@ -1,5 +1,6 @@
 using BetterReads.Auth.Application.Commands;
 using BetterReads.Auth.Application.Dtos;
+using BetterReads.Auth.Application.Queries;
 using BetterReads.Auth.Infra.Extensions;
 using BetterReads.Shared.Web.Extensions;
 
@@ -31,5 +32,6 @@ app.MapGet("/hello-world", () => "Hello world From Auth Service")
     .WithName("HelloWorld");
 
 app.MediatorMapGet<LoginQuery, LoginResponse>("/login/{code}");
+app.MediatorMapPost<RegisterCommand>("/register");
 
 app.Run();
