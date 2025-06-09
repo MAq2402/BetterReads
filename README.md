@@ -24,6 +24,8 @@ It is a personal project to improve tech skills.
 - MongoDB: Storing data
 - Azure Service Bus - For communication between decoupled services using asynchronous messaging
 - Azure OpenAI - Getting current book recommendations
+- Github Actions: CI/CD pipeline for automated builds
+- MassTransit: Messaging, sagas
 
 ---
 
