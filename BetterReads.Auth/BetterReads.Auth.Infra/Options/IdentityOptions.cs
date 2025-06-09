@@ -2,8 +2,9 @@
 
 public class IdentityOptions
 {
-    public string ClientSecret { get; set; }
-    public string ClientId { get; set; }
-    public string RedirectUri { get; set; }
-    public string Url { get; set; }
+    public required string ClientSecret { get; set; }
+    public required string ClientId { get; set; }
+    public required string RedirectUri { get; set; }
+    public required string Url { get; set; }
+    public required string Region { get; set; }
 }
