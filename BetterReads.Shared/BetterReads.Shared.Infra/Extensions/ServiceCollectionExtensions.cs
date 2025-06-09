@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
 
 namespace BetterReads.Shared.Infra.Extensions;
 
@@ -14,6 +17,7 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddMongo(this IServiceCollection services, IConfigurationManager configuration)
     {
+        BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
         services.Configure<MongoSettings>(configuration.GetSection(MongoSettings.Name));
         services.AddSingleton(typeof(IMongoRepository<,>), typeof(MongoRepository<,>));
 

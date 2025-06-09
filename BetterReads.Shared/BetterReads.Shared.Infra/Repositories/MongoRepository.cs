@@ -15,7 +15,6 @@ internal sealed class MongoRepository<TDocument, TId> : IMongoRepository<TDocume
 
     public MongoRepository(IOptions<MongoSettings> mongoSettings)
     {
-        BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
         var client = new MongoClient(mongoSettings.Value.ConnectionString);
         var database = client.GetDatabase(mongoSettings.Value.DatabaseName);
         _collection = database.GetCollection<TDocument>(TDocument.CollectionName());

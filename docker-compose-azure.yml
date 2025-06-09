@@ -15,7 +15,9 @@ services:
       - "5001:5001"
   books:
     image: betterreadsregistry.azurecr.io/books:latest
-    build: ./BetterReads.Books/BetterReads.Books.Web
+    build:
+      context: . 
+      dockerfile: ./BetterReads.Books/BetterReads.Books.Web/Dockerfile
     ports: 
       - "5002:5002"
   recommendations:

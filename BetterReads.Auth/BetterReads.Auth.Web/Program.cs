@@ -3,6 +3,7 @@ using BetterReads.Auth.Application.Dtos;
 using BetterReads.Auth.Application.Queries;
 using BetterReads.Auth.Infra.Extensions;
 using BetterReads.Shared.Web.Extensions;
+using MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,16 @@ builder.Services.AddOpenApi();
 builder.Services.AddInfra(builder.Configuration);
 builder.Services.AddMediatR(cfg => {
     cfg.RegisterServicesFromAssemblyContaining<LoginQuery>();
+});
+
+builder.Services.AddMassTransit(x =>
+{
+    x.UsingAzureServiceBus((context,cfg) =>
+    {
+        cfg.Host(builder.Configuration.GetSection("AzureServiceBus").GetValue<string>("ConnectionString"));
+
+        cfg.ConfigureEndpoints(context);
+    });
 });
 
 var app = builder.Build();
