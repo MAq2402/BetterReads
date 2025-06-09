@@ -6,7 +6,7 @@ namespace BetterReads.Shelves.Domain;
 
 public class Shelf : AggregateRoot
 {
-    private readonly List<Book> _books = new List<Book>();
+    private readonly List<Book> _books = new();
     public Shelf(AggregateId id, string name, Guid userId) : base(id)
     {
         Name = name;
@@ -25,6 +25,21 @@ public class Shelf : AggregateRoot
     public Guid UserId { get; private set; }
     public List<Book> Books => _books;
 
+    public static Shelf WantToRead(Guid userId)
+    {
+        return new Shelf(Guid.NewGuid(), "Want to Read", userId);
+    }
+    
+    public static Shelf Read(Guid userId)
+    {
+        return new Shelf(Guid.NewGuid(), "Read", userId);
+    }
+    
+    public static Shelf CurrentlyReading(Guid userId)
+    {
+        return new Shelf(Guid.NewGuid(), "Currently Reading", userId);
+    }
+    
     public void AddBook(Book book)
     {
         if (_books.Any(x => x == book))

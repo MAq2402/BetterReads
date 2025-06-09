@@ -11,4 +11,8 @@
       <ProjectReference Include="..\BetterReads.Shelves.Domain\BetterReads.Shelves.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="MassTransit.MongoDb" Version="8.4.1" />
+    </ItemGroup>
+
 </Project>

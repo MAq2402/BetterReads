@@ -7,6 +7,8 @@ using BetterReads.Recommendations.Infra.Clients;
 using BetterReads.Recommendations.Infra.Extensions;
 using BetterReads.Recommendations.Infra.Services;
 using BetterReads.Recommendations.Infra.Settings;
+using BetterReads.Shared.Application.Commands;
+using BetterReads.Shared.Application.Events;
 using BetterReads.Shared.Web.Extensions;
 using MassTransit;
 using MediatR;
@@ -15,7 +17,8 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Host.UseSerilog((context, loggerConfiguration) => loggerConfiguration.ReadFrom.Configuration(context.Configuration));
+builder.Host.UseSerilog((context, loggerConfiguration) =>
+    loggerConfiguration.ReadFrom.Configuration(context.Configuration));
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -24,7 +27,7 @@ builder.Services.AddInfra(builder.Configuration);
 
 builder.Services.Configure<AzureOpenAiSettings>(builder.Configuration.GetSection("AzureOpenAi"));
 
-var openAiSettings = builder.Configuration.GetSection("AzureOpenAi").Get<AzureOpenAiSettings>() 
+var openAiSettings = builder.Configuration.GetSection("AzureOpenAi").Get<AzureOpenAiSettings>()
                      ?? throw new NullReferenceException(nameof(AzureOpenAiSettings));
 builder.Services.AddAzureOpenAIChatCompletion(
     deploymentName: openAiSettings.Deployment,
@@ -40,12 +43,15 @@ builder.Services.AddScoped<IShelvesService, ShelvesService>();
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<BookAddedConsumer>();
+    x.AddConsumer<AddInitialRecommendationsConsumer>();
     x.SetKebabCaseEndpointNameFormatter();
-    x.UsingAzureServiceBus((context,cfg) =>
+    x.UsingAzureServiceBus((context, cfg) =>
     {
         cfg.Host(builder.Configuration.GetSection("AzureServiceBus").GetValue<string>("ConnectionString"));
 
-        cfg.ReceiveEndpoint("book-added",e => e.ConfigureConsumer<BookAddedConsumer>(context));
+        cfg.ReceiveEndpoint(KebabCaseEndpointNameFormatter.Instance.SanitizeName(nameof(AddInitialRecommendations)),
+            e => e.ConfigureConsumer<AddInitialRecommendationsConsumer>(context));
+        cfg.ReceiveEndpoint(KebabCaseEndpointNameFormatter.Instance.SanitizeName(nameof(BookAdded)), e => e.ConfigureConsumer<BookAddedConsumer>(context));
     });
 });
 

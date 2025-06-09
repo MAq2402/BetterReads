@@ -15,6 +15,7 @@ public static class ServiceCollectionExtensions
         services.AddKeyVault(configuration);
         services.AddScoped<IIdentityService, CognitoService>();
         services.AddHttpClient<CognitoService>();
+        services.AddMassTransitPublisher();
         return services;
     }
 }
