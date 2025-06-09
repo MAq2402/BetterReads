@@ -5,5 +5,5 @@ namespace BetterReads.Auth.Application.Contracts;
 public interface IIdentityService
 {
     Task<LoginResponse?> Login(string code);
-    Task Register(string email, string password);
+    Task<Guid> Register(string email, string password);
 }

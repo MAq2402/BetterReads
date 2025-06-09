@@ -61,7 +61,7 @@ public class CognitoService : IIdentityService
         };
     }
 
-    public async Task Register(string email, string password)
+    public async Task<Guid> Register(string email, string password)
     {
         var signUpRequest = new SignUpRequest
         {
@@ -84,6 +84,8 @@ public class CognitoService : IIdentityService
         {
             throw new ApplicationException("Cognito Registration Failed");
         }
+        
+        return Guid.Parse(response.UserSub);
     }
 
     private string CalculateSecretHash(string username, string clientId, string clientSecret)
