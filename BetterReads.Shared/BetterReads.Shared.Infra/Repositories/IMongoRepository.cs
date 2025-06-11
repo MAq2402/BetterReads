@@ -7,9 +7,11 @@ public interface IMongoRepository<TDocument, in TId> where TDocument : IMongoDoc
     where TId : IEquatable<TId>
 {
     Task Add(TDocument document);
+    Task Add(TDocument document, IClientSessionHandle session);
     Task<TDocument?> Get(TId id);
     Task<IEnumerable<TDocument>> GetAll();
     Task Save(TDocument document);
+    Task Save(TDocument document, IClientSessionHandle session);
     Task<TDocument?> Get(FilterDefinition<TDocument> filter);
     Task<List<TDocument>> GetMany(FilterDefinition<TDocument> filter);
 }

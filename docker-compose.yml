@@ -40,13 +40,23 @@ services:
     ports: 
       - "5005:5005"
   mongo:
-    image: mongo
-    restart: always
+    image: mongo:7.0
+    command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27017"]
     ports:
       - 27017:27017
-    volumes: 
-      - ~/mongo/data:/data/db
-    command: mongod --quiet --logpath /dev/null
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: echo "try { rs.status() } catch (err) { rs.initiate({_id:'rs0',members:[{_id:0,host:'host.docker.internal:27017'}]}) }" | mongosh --port 27017 --quiet
+      interval: 5s
+      timeout: 30s
+      start_period: 0s
+      start_interval: 1s
+      retries: 30
+    volumes:
+      - "mongo_data:/data/db"
+      - "mongo_config:/data/configdb"
+
   redis:
     image: redis:latest
     ports:
@@ -59,3 +69,7 @@ services:
     volumes: 
       - ~/redis:/data
     command: ["redis-server"]
+
+volumes:
+  mongo_data:
+  mongo_config:

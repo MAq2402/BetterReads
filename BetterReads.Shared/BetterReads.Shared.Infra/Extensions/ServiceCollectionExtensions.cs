@@ -1,6 +1,8 @@
 ﻿using Azure.Identity;
+using BetterReads.Shared.Application.Repositories;
 using BetterReads.Shared.Application.Services;
 using BetterReads.Shared.Infra.Repositories;
+using BetterReads.Shared.Infra.Repositories.Types;
 using BetterReads.Shared.Infra.Services;
 using BetterReads.Shared.Infra.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -10,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
+using MongoDB.Driver;
 
 namespace BetterReads.Shared.Infra.Extensions;
 
@@ -18,8 +21,12 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddMongo(this IServiceCollection services, IConfigurationManager configuration)
     {
         BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+
         services.Configure<MongoSettings>(configuration.GetSection(MongoSettings.Name));
+        var client = new MongoClient(configuration.GetSection(MongoSettings.Name).GetValue<string>("ConnectionString"));
+        services.AddSingleton<IMongoClient>(client);
         services.AddSingleton(typeof(IMongoRepository<,>), typeof(MongoRepository<,>));
+        services.AddSingleton<IUnitOfWork, MongoUnitOfWork>();
 
         return services;
     }
@@ -64,6 +71,12 @@ public static class ServiceCollectionExtensions
     {
         services.AddScoped<IIntegrationEventPublisher, MassTransitIntegrationEventPublisher>();
         
+        return services;
+    }
+
+    public static IServiceCollection AddMongoOutbox(this IServiceCollection services)
+    {
+        services.AddScoped<IOutboxRepository, MongoOutboxRepository>();
         return services;
     }
 }
