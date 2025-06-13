@@ -1,14 +1,16 @@
-﻿using BetterReads.Shared.Domain.Base;
+﻿using BetterReads.Shared.Application.Repositories.Types;
+using BetterReads.Shared.Domain.Base;
 using BetterReads.Shared.Infra.Repositories;
+using BetterReads.Shared.Infra.Repositories.Types;
+using BetterReads.Shelves.Application.Repositories;
 using BetterReads.Shelves.Domain;
-using BetterReads.Shelves.Domain.Repositories;
 using BetterReads.Shelves.Infra.Mongo.Documents;
 using BetterReads.Shelves.Infra.Mongo.Mappings;
 using MongoDB.Driver;
 
 namespace BetterReads.Shelves.Infra.Mongo.Repositories;
 
-public class MongoShelvesRepository(IMongoRepository<ShelfDocument, Guid> repository) : IShelvesRepository
+public class MongoShelvesRepository(IMongoRepository<ShelfDocument, Guid> repository) : ITransactionShelvesRepository
 {
     public async Task AddShelf(Shelf shelf)
     {
@@ -40,5 +42,16 @@ public class MongoShelvesRepository(IMongoRepository<ShelfDocument, Guid> reposi
     public async Task Save(Shelf shelf)
     {
         await repository.Save(shelf.AsDocument());
+    }
+
+    public async Task Save(Shelf shelf, IDbSession dbSession)
+    {
+        var mongoDbSession = dbSession as MongoDbSession;
+
+        if (mongoDbSession is null)
+        {
+            throw new ArgumentException("DbSession is not a MongoDbSession");
+        } 
+        await repository.Save(shelf.AsDocument(), mongoDbSession.Session);
     }
 }

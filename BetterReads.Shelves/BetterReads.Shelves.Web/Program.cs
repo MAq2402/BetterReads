@@ -1,6 +1,4 @@
 using System.Security.Claims;
-using BetterReads.Shared.Application.Commands;
-using BetterReads.Shared.Application.Events;
 using BetterReads.Shared.Web.Extensions;
 using BetterReads.Shelves.Application.Commands;
 using BetterReads.Shelves.Application.Consumers;
