@@ -26,6 +26,7 @@ It is a personal project to improve tech skills.
 - Azure OpenAI - Getting current book recommendations
 - Github Actions: CI/CD pipeline for automated builds
 - MassTransit: Messaging, sagas
+- Outbox pattern: At least once delivery
 
 ---
 
