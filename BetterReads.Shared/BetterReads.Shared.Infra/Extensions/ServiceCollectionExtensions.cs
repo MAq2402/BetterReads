@@ -2,7 +2,6 @@
 using BetterReads.Shared.Application.Repositories;
 using BetterReads.Shared.Application.Services;
 using BetterReads.Shared.Infra.Repositories;
-using BetterReads.Shared.Infra.Repositories.Types;
 using BetterReads.Shared.Infra.Services;
 using BetterReads.Shared.Infra.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -76,7 +75,8 @@ public static class ServiceCollectionExtensions
 
     public static IServiceCollection AddMongoOutbox(this IServiceCollection services)
     {
-        services.AddScoped<IOutboxRepository, MongoOutboxRepository>();
+        services.AddSingleton<IOutboxRepository, MongoOutboxRepository>();
+        services.AddHostedService<OutboxBackgroundService>();
         return services;
     }
 }

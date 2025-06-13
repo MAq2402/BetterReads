@@ -1,4 +1,4 @@
-﻿namespace BetterReads.Shared.Infra.Repositories.Types;
+﻿namespace BetterReads.Shared.Application.Repositories.Types;
 
 public enum OutboxEventStatus
 {

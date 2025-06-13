@@ -1,5 +1,6 @@
 ﻿using BetterReads.Shared.Infra.Extensions;
 using BetterReads.Shelves.Application.Repositories;
+using BetterReads.Shelves.Domain.Repositories;
 using BetterReads.Shelves.Infra.Mongo.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,7 @@ public static class ServiceCollectionExtensions
         services.AddMongo(configuration);
         services.AddMongoOutbox();
         services.AddSingleton<ITransactionShelvesRepository, MongoShelvesRepository>();
+        services.AddSingleton<IShelvesRepository, MongoShelvesRepository>();
         services.AddMassTransitPublisher();
         return services;
     }

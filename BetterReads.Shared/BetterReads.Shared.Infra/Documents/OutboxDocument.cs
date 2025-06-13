@@ -1,4 +1,4 @@
-﻿using BetterReads.Shared.Infra.Repositories.Types;
+﻿using BetterReads.Shared.Application.Repositories.Types;
 
 namespace BetterReads.Shared.Infra.Documents;
 
