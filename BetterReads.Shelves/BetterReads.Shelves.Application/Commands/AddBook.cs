@@ -1,9 +1,9 @@
-﻿using BetterReads.Shared.Application.Events;
-using BetterReads.Shared.Application.Exceptions;
-using BetterReads.Shared.Application.Services;
+﻿using BetterReads.Shared.Application.Exceptions;
+using BetterReads.Shared.Application.Repositories;
+using BetterReads.Shelves.Application.Repositories;
 using BetterReads.Shelves.Domain;
-using BetterReads.Shelves.Domain.Repositories;
 using MediatR;
+using BookAdded = BetterReads.Shared.Application.Events.BookAdded;
 
 namespace BetterReads.Shelves.Application.Commands;
 
@@ -16,7 +16,7 @@ public record AddBook(
     Guid UserId,
     Guid ShelfId) : IRequest;
 
-public class AddBookHandler(IShelvesRepository shelvesRepository, IIntegrationEventPublisher publisher) : IRequestHandler<AddBook>
+public class AddBookHandler(ITransactionShelvesRepository shelvesRepository, IOutboxRepository outboxRepository, IUnitOfWork unitOfWork) : IRequestHandler<AddBook>
 {
     public async Task Handle(AddBook request, CancellationToken cancellationToken)
     {
@@ -28,8 +28,11 @@ public class AddBookHandler(IShelvesRepository shelvesRepository, IIntegrationEv
         }
         
         shelf.AddBook(new Book(request.Name, request.Author, request.Isbn, request.Language, request.YearOfPublication));
-        await shelvesRepository.Save(shelf);
-
-        await publisher.Publish(new BookAdded(shelf.UserId));
+        
+        await unitOfWork.Transaction(async session =>
+        {
+            await shelvesRepository.Save(shelf, session);
+            await outboxRepository.Add(new BookAdded(shelf.UserId), session);
+        });
     }
 }
