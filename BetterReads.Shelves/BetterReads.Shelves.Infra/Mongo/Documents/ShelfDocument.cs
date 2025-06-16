@@ -9,5 +9,5 @@ public class ShelfDocument : IMongoDocument<Guid>
     public int Version { get; set; }
     public Guid UserId { get; set; }
     public string Name { get; set; } = string.Empty;
-    public List<BookDocument> Books { get; set; }
+    public List<BookDocument>? Books { get; set; }
 }

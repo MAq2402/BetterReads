@@ -1,3 +1,4 @@
+using System.Net.Mime;
 using System.Security.Claims;
 using BetterReads.Shared.Web.Extensions;
 using BetterReads.Shelves.Application.Commands;
@@ -5,9 +6,11 @@ using BetterReads.Shelves.Application.Consumers;
 using BetterReads.Shelves.Application.Dtos;
 using BetterReads.Shelves.Application.Queries;
 using BetterReads.Shelves.Application.Sagas;
+using BetterReads.Shelves.Domain.Exceptions;
 using BetterReads.Shelves.Infra.Extensions;
 using MassTransit;
 using MediatR;
+using Microsoft.AspNetCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +37,7 @@ builder.Services.AddMassTransit(x =>
         cfg.ConfigureEndpoints(context);
     });
 });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -42,6 +46,28 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseExceptionHandler(exceptionHandlerApp =>
+{
+    exceptionHandlerApp.Run(async context =>
+    {
+        var exceptionHandlerPathFeature =
+            context.Features.Get<IExceptionHandlerPathFeature>();
+        if (exceptionHandlerPathFeature?.Error is ShelfWithNameAlreadyExistsException)
+        {
+            context.Response.StatusCode = 400;
+            await context.Response.WriteAsync(exceptionHandlerPathFeature.Error.Message);
+        }
+        else
+        {
+            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+            // using static System.Net.Mime.MediaTypeNames;
+            context.Response.ContentType = MediaTypeNames.Text.Plain;
+
+            await context.Response.WriteAsync("An exception was thrown.");
+        }
+    });
+});
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseHttpsRedirection();
@@ -49,8 +75,16 @@ app.UseHttpsRedirection();
 app.MapGet("/hello-world", () => "Hello world From Shelves Service")
     .WithName("HelloWorld");
 
+// TEST THAT
+// INTEGRATION WITH TEST CONTAINERS
+// PERFORMANCE TESTS
+// CONTRACT TESTS
+// ADD TESTS TO PIPELINE
+// MAYBE TESTS WITH MASS TRANSIT ALSO - THE SAGA?
+// BY PASS COGNIT?
 app.MediatorMapPostRequireAuthorization<CreateShelfDto>("/shelves");
 
+//TEST THAT
 app.MediatorMapPostRequireAuthorization<AddBookDto>("/shelves/books");
 
 app.MapGet("/shelves/{id}", async (IMediator mediator, Guid id, ClaimsPrincipal user) => await mediator.Send(
@@ -63,3 +97,4 @@ app.MapGet("/users/{userId}/shelves", async (IMediator mediator, Guid userId) =>
     .WithOpenApi();
 
 app.Run();
+public partial class Program { }

@@ -54,6 +54,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterReads.Books.Applicati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterReads.Books.Infra", "BetterReads.Books\BetterReads.Books.Infra\BetterReads.Books.Infra.csproj", "{D5FAB7E3-B861-447E-9CA1-74E3227680FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterReads.Shelves.Tests", "BetterReads.Shelves\BetterReads.Shelves.Tests\BetterReads.Shelves.Tests.csproj", "{28432371-C85E-4101-BA2B-5681719306D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -80,6 +82,7 @@ Global
 		{943660F8-BE58-42C1-85A5-2F183B337877} = {0BD3BA13-3566-40B3-86A4-08CF427F2024}
 		{14B0C54C-3AD2-4A28-969C-C93416C563EF} = {B05BE457-8F99-40DC-81B1-632C47D683F9}
 		{D5FAB7E3-B861-447E-9CA1-74E3227680FA} = {B05BE457-8F99-40DC-81B1-632C47D683F9}
+		{28432371-C85E-4101-BA2B-5681719306D4} = {39DAE573-0C67-4C13-968A-32AD9FAF1F7D}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D3289D38-7119-400A-9820-43107A7A50F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -162,5 +165,9 @@ Global
 		{D5FAB7E3-B861-447E-9CA1-74E3227680FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5FAB7E3-B861-447E-9CA1-74E3227680FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5FAB7E3-B861-447E-9CA1-74E3227680FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28432371-C85E-4101-BA2B-5681719306D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28432371-C85E-4101-BA2B-5681719306D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28432371-C85E-4101-BA2B-5681719306D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28432371-C85E-4101-BA2B-5681719306D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
