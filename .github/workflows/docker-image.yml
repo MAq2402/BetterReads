@@ -18,6 +18,13 @@ jobs:
         with:
           dotnet-version: '9.0.x'
 
+      - name: App Settings Variable Substitution
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: '${{env.DOTNET_ROOT}}/BetterReads.Shelves/BetterReads.Shelves.Web/appsettings.json'
+        env:
+          KeyVault.ClientSecret: ${{ secrets.KEYVAULT_CLIENTSECRET }}
+
       - name: Restore dependencies
         run: dotnet restore ./BetterReads.Shelves/BetterReads.Shelves.Web/BetterReads.Shelves.Web.csproj
 
