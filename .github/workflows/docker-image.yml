@@ -5,6 +5,28 @@ on:
     branches: [master]
 
 jobs:
+  test:
+    name: Run .NET Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: cd 
+
+      - name: Restore dependencies
+        run: dotnet restore ./BetterReads.Shelves/BetterReads.Shelves.Web/BetterReads.Shelves.Web.csproj
+
+      - name: Build solution
+        run: dotnet build ./BetterReads.Shelves/BetterReads.Shelves.Web/BetterReads.Shelves.Web.csproj --no-restore --configuration Release
+
+      - name: Run integration tests
+        run: dotnet test ./BetterReads.Shelves/BetterReads.Shelves.Tests/BetterReads.Shelves.Tests.csproj --configuration Release --verbosity normal
   build-and-push:
     runs-on: ubuntu-latest
 
