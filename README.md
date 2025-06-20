@@ -27,6 +27,7 @@ It is a personal project to improve tech skills.
 - Github Actions: CI/CD pipeline for automated builds
 - MassTransit: Messaging, sagas
 - Outbox pattern: At least once delivery
+- TestContainers: Integration testing
 
 ---
 
