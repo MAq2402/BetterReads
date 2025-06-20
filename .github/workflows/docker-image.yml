@@ -21,7 +21,7 @@ jobs:
       - name: App Settings Variable Substitution
         uses: microsoft/variable-substitution@v1
         with:
-          files: '${{env.DOTNET_ROOT}}/BetterReads.Shelves/BetterReads.Shelves.Web/appsettings.json'
+          files: './BetterReads.Shelves/BetterReads.Shelves.Web/appsettings.json'
         env:
           KeyVault.ClientSecret: ${{ secrets.KEYVAULT_CLIENTSECRET }}
 
@@ -35,6 +35,7 @@ jobs:
         run: dotnet test ./BetterReads.Shelves/BetterReads.Shelves.Tests/BetterReads.Shelves.Tests.csproj --configuration Release --verbosity normal
   build-and-push:
     runs-on: ubuntu-latest
+    needs: test
 
     steps:
       - name: Checkout code
