@@ -21,6 +21,7 @@ builder.Services.AddMassTransit(x =>
 {
     x.UsingAzureServiceBus((context,cfg) =>
     {
+        cfg.UseInstrumentation();
         cfg.Host(builder.Configuration.GetSection("AzureServiceBus").GetValue<string>("ConnectionString"));
 
         cfg.ConfigureEndpoints(context);

@@ -6,6 +6,8 @@ services:
       dockerfile: betterReads.ApiGateway/betterReads.ApiGateway.Web/Dockerfile
     ports: 
       - "5000:5000"
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
   auth:
     image: auth
     build:
@@ -13,6 +15,8 @@ services:
       dockerfile: betterReads.Auth/betterReads.Auth.Web/Dockerfile
     ports: 
       - "5001:5001"
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
   books:
     image: books
     build:
@@ -20,6 +24,8 @@ services:
       dockerfile: betterReads.Books/betterReads.Books.Web/Dockerfile
     ports: 
       - "5002:5002"
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
   recommendations:
     image: recommendations
     build:
@@ -27,11 +33,15 @@ services:
       dockerfile: betterReads.Recommendations/betterReads.Recommendations.Web/Dockerfile
     ports: 
       - "5003:5003"
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
   reviews:
     image: reviews
     build: ./BetterReads.Reviews/BetterReads.Reviews.Web
     ports: 
       - "5004:5004"
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
   shelves:
     image: shelves
     build:
@@ -39,6 +49,8 @@ services:
       dockerfile: betterReads.Shelves/betterReads.Shelves.Web/Dockerfile
     ports: 
       - "5005:5005"
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
   mongo:
     image: mongo:7.0
     command: ["--replSet", "rs0", "--bind_ip_all", "--port", "27017", "--quiet", "--logpath", "/dev/null"]
@@ -69,6 +81,18 @@ services:
     volumes: 
       - ~/redis:/data
     command: ["redis-server"]
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    ports:
+      - "16686:16686"  # UI
+      - "4317:4317"    # OTLP gRPC
+      - "4318:4318"    # OTLP HTTP (optional)
+      - "14250:14250"  # gRPC collector
+      - "6831:6831/udp"  # Jaeger agent (UDP)
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
 
 volumes:
   mongo_data:

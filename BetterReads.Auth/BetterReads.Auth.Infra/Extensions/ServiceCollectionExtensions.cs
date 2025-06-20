@@ -16,6 +16,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IIdentityService, CognitoService>();
         services.AddHttpClient<CognitoService>();
         services.AddMassTransitPublisher();
+        services.AddTelemetry("Auth");
         return services;
     }
 }

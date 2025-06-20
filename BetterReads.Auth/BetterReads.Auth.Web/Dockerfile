@@ -4,6 +4,7 @@ WORKDIR /app
 
 ENV ASPNETCORE_URLS http://*:5001
 ENV ASPNETCORE_ENVIRONMENT docker
+ENV OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 COPY . .
