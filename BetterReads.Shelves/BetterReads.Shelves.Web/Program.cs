@@ -1,12 +1,10 @@
 using System.Security.Claims;
+using BetterReads.Shared.Web.ExceptionHandlers;
 using BetterReads.Shared.Web.Extensions;
 using BetterReads.Shelves.Application.Commands;
-using BetterReads.Shelves.Application.Consumers;
 using BetterReads.Shelves.Application.Dtos;
 using BetterReads.Shelves.Application.Queries;
-using BetterReads.Shelves.Application.Sagas;
 using BetterReads.Shelves.Infra.Extensions;
-using MassTransit;
 using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,24 +14,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddMediatR(cfg => { cfg.RegisterServicesFromAssemblyContaining<AddShelf>(); });
 builder.Services.AddInfra(builder.Configuration);
+builder.Services.AddExceptionHandler<ExceptionHandler>();
+builder.Services.AddProblemDetails();
 
-builder.Services.AddMassTransit(x =>
-{
-    x.AddConsumers(typeof(CreateDefaultShelvesConsumer));
-    x.AddSagaStateMachine<NewUserSaga, NewUserInstance>()
-        .MongoDbRepository(r =>
-        {
-            r.Connection = builder.Configuration.GetSection("Mongo").GetValue<string>("ConnectionString");
-            r.DatabaseName = builder.Configuration.GetSection("Mongo").GetValue<string>("DatabaseName");
-            r.CollectionName = "NewUserSagas";
-        });
-    x.UsingAzureServiceBus((context,cfg) =>
-    {
-        cfg.Host(builder.Configuration.GetSection("AzureServiceBus").GetValue<string>("ConnectionString"));
-
-        cfg.ConfigureEndpoints(context);
-    });
-});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -41,6 +24,8 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseExceptionHandler();
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -63,3 +48,4 @@ app.MapGet("/users/{userId}/shelves", async (IMediator mediator, Guid userId) =>
     .WithOpenApi();
 
 app.Run();
+public partial class Program { }

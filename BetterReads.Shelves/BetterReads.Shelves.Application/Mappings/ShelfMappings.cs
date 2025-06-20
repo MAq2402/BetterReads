@@ -16,7 +16,7 @@ public static class ShelfMappings
         };
     }
 
-    public static BookDto AsDto(this Book book)
+    private static BookDto AsDto(this Book book)
     {
         return new BookDto
         {

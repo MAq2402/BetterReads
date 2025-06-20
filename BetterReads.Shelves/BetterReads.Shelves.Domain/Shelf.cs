@@ -13,11 +13,11 @@ public class Shelf : AggregateRoot
         UserId = userId;
     }
     
-    public Shelf(AggregateId id, int version, string name, Guid userId, List<Book> books) : base(id)
+    public Shelf(AggregateId id, int version, string name, Guid userId, List<Book>? books) : base(id)
     {
         Name = name;
         UserId = userId;
-        _books = books;
+        _books = books ?? new List<Book>();
         Version = version;
     }
 

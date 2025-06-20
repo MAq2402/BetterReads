@@ -1,5 +1,7 @@
-﻿namespace BetterReads.Shared.Application.Exceptions;
+﻿using System.Net;
 
-public class UnauthorizedException(string message) : ApplicationException(message)
+namespace BetterReads.Shared.Application.Exceptions;
+
+public class UnauthorizedException(string message) : ApplicationException(message, HttpStatusCode.Unauthorized)
 {
 }

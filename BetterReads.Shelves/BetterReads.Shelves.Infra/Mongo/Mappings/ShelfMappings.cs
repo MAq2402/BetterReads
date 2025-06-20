@@ -27,6 +27,6 @@ public static class ShelfMappings
     public static Shelf AsEntity(this ShelfDocument shelf)
     {
         return new Shelf(shelf.Id, shelf.Version, shelf.Name, shelf.UserId,
-            shelf.Books.Select(x => new Book(x.Name, x.Author, x.Isbn, x.Language, x.YearOfPublication)).ToList());
+            shelf.Books?.Select(x => new Book(x.Name, x.Author, x.Isbn, x.Language, x.YearOfPublication)).ToList());
     }
 }
