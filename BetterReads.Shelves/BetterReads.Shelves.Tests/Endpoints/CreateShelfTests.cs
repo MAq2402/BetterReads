@@ -6,16 +6,21 @@ using BetterReads.Shelves.Tests.Shared;
 using FluentAssertions;
 
 namespace BetterReads.Shelves.Tests.Endpoints;
-public class CreateShelfEndpointTestsFactory : TestFactory
+public class CreateShelfTests : TestFactory
 {
     [Fact]
     public async Task Should_Create_Shelf()
     {
-        var book = new CreateShelfDto { Name = "TestShelf" };
+        var shelf = new CreateShelfDto { Name = "TestShelf" };
         
-        var response = await Client.PostAsJsonAsync("/shelves", book);
+        var response = await Client.PostAsJsonAsync("/shelves", shelf);
         
         response.StatusCode.Should().Be(HttpStatusCode.OK);
+        
+        var createdShelf = await Repository.GetShelf(shelf.Name);
+        
+        createdShelf.Should().NotBeNull();
+        createdShelf.Name.Should().Be(shelf.Name);
     }
     
     [Fact]
@@ -23,9 +28,9 @@ public class CreateShelfEndpointTestsFactory : TestFactory
     {
         await Repository.CreateShelf(new ShelfDocument { Name = "TestShelf", UserId = MockAuthHandler.UserId });
         
-        var book = new CreateShelfDto { Name = "TestShelf" };
+        var shelf = new CreateShelfDto { Name = "TestShelf" };
         
-        var response = await Client.PostAsJsonAsync("/shelves", book);
+        var response = await Client.PostAsJsonAsync("/shelves", shelf);
         
         response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
         (await response.Content.ReadAsStringAsync()).Should().Be("Shelf with name already exists");
