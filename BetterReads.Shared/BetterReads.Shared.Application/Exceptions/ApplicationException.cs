@@ -1,8 +1,8 @@
-﻿namespace BetterReads.Shared.Application.Exceptions;
+﻿using System.Net;
 
-public abstract class ApplicationException : Exception
+namespace BetterReads.Shared.Application.Exceptions;
+
+public abstract class ApplicationException(string message, HttpStatusCode statusCode) : Exception(message)
 {
-    protected ApplicationException(string message) : base(message)
-    {
-    } 
+    public HttpStatusCode StatusCode { get; private set; } = statusCode;
 }

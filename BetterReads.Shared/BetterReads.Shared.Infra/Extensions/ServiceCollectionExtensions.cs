@@ -19,7 +19,7 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddMongo(this IServiceCollection services, IConfigurationManager configuration)
     {
-        BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+        TryToRegisterGuidSerializer();
 
         services.Configure<MongoSettings>(configuration.GetSection(MongoSettings.Name));
         var client = new MongoClient(configuration.GetSection(MongoSettings.Name).GetValue<string>("ConnectionString"));
@@ -28,6 +28,17 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<IUnitOfWork, MongoUnitOfWork>();
 
         return services;
+    }
+
+    private static void TryToRegisterGuidSerializer()
+    {
+        try
+        {
+            BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+        }
+        catch (BsonSerializationException)
+        {
+        }
     }
 
     public static IServiceCollection AddKeyVault(this IServiceCollection services,

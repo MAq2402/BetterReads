@@ -9,7 +9,7 @@ namespace BetterReads.Shelves.Tests.Shared;
 public class MockAuthHandler : AuthenticationHandler<AuthenticationSchemeOptions>
 {
     public const string SchemeName = "MockScheme";
-    public static Guid UserId = Guid.NewGuid();
+    public static readonly Guid UserId = Guid.NewGuid();
 
     public MockAuthHandler(IOptionsMonitor<AuthenticationSchemeOptions> options, ILoggerFactory logger,
         UrlEncoder encoder, ISystemClock clock) : base(options, logger, encoder, clock)

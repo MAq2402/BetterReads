@@ -1,54 +1,19 @@
 ﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
-using Testcontainers.MongoDb;
 
 namespace BetterReads.Shelves.Tests.Shared;
 
-public class TestWebApplicationFactory : WebApplicationFactory<Program>, IAsyncLifetime
+public class TestWebApplicationFactory : WebApplicationFactory<Program>
 {
-    private MongoDbContainer  _mongoContainer;
-    public HttpClient Client { get; set; }
-    // public string MongoConnectionString => _mongoContainer.GetConnectionString();
-
-    public TestWebApplicationFactory()
+    public HttpClient Client { get; private set; }
+    public MongoClient? MongoClient { get; private set; }
+    public TestWebApplicationFactory(string connectionString)
     {
-
-    }
-    
-    protected override void ConfigureWebHost(IWebHostBuilder builder)
-    {
-        //CONFIGURE TEST SERVICES METHOD INSTEAD?
-        builder.ConfigureTestServices(services =>
+        Client = WithWebHostBuilder(builder =>
         {
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = MockAuthHandler.SchemeName;
-                options.DefaultChallengeScheme = MockAuthHandler.SchemeName;
-            }).AddScheme<AuthenticationSchemeOptions, MockAuthHandler>(
-                MockAuthHandler.SchemeName, options => { });
-        });
-    }
-
-    public async Task InitializeAsync()
-    {
-        _mongoContainer = new MongoDbBuilder()
-            .WithPassword(string.Empty)
-            .WithUsername(string.Empty)
-            .WithImage("mongo:7.0")
-            .WithPortBinding(27017, true)
-            .WithExposedPort(27017)
-            // .WithExtraHost("host.docker.internal:host-gateway", "27017")
-            // .WithReplicaSet()
-            .WithCleanUp(true)
-            .Build();
-        await _mongoContainer.StartAsync();
-        Client = WithWebHostBuilder(x =>
-        {
-            x.ConfigureServices(services =>
+            builder.ConfigureServices(services =>
             {
                 var descriptor = services.SingleOrDefault(x => x.ServiceType == typeof(IMongoClient));
 
@@ -57,13 +22,16 @@ public class TestWebApplicationFactory : WebApplicationFactory<Program>, IAsyncL
                     services.Remove(descriptor);
                 }
 
-                services.AddSingleton<IMongoClient>(x => new MongoClient(_mongoContainer.GetConnectionString()));
+                MongoClient = new MongoClient(connectionString);
+                services.AddSingleton<IMongoClient>(x => MongoClient);
+                
+                services.AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = MockAuthHandler.SchemeName;
+                    options.DefaultChallengeScheme = MockAuthHandler.SchemeName;
+                }).AddScheme<AuthenticationSchemeOptions, MockAuthHandler>(
+                    MockAuthHandler.SchemeName, options => { });
             });
         }).CreateClient();
-    }
-
-    public new async Task DisposeAsync()
-    { 
-        await _mongoContainer.StopAsync();
     }
 }
