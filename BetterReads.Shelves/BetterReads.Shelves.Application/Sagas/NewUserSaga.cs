@@ -15,7 +15,6 @@ public class NewUserSaga : MassTransitStateMachine<NewUserInstance>
 {
     public State CreatingDefaultShelves { get; set; }
     public State AddingInitialRecommendations { get; set; }
-
     public Event<UserRegistered> UserRegistered { get; set; }
     public Event<DefaultShelvesCreated> DefaultShelvesCreated { get; set; }
     public Event<InitialRecommendationsAdded> InitialRecommendationsAdded { get; set; }

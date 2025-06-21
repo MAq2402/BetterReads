@@ -1,6 +1,7 @@
 ﻿using BetterReads.Books.Application.Services;
 using BetterReads.Books.Infra.Caching;
 using BetterReads.Books.Infra.OpenLibrary;
+using BetterReads.Shared.Infra.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,6 +19,7 @@ public static class ServiceCollectionExtensions
             option.Configuration = configuration["Redis:ConnectionString"];
         });
         services.Configure<OpenLibrarySettings>(configuration.GetSection("OpenLibrary"));
+        services.AddTelemetry("Books");
         return services;
     }
 }

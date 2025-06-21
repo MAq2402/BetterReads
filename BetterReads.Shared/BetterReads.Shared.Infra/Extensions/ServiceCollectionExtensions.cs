@@ -1,9 +1,11 @@
 ﻿using Azure.Identity;
 using BetterReads.Shared.Application.Repositories;
 using BetterReads.Shared.Application.Services;
+using BetterReads.Shared.Infra.MediatR;
 using BetterReads.Shared.Infra.Repositories;
 using BetterReads.Shared.Infra.Services;
 using BetterReads.Shared.Infra.Settings;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +14,8 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 namespace BetterReads.Shared.Infra.Extensions;
 
@@ -73,14 +77,14 @@ public static class ServiceCollectionExtensions
                 };
             });
         services.AddAuthorizationBuilder();
-        
+
         return services;
     }
 
     public static IServiceCollection AddMassTransitPublisher(this IServiceCollection services)
     {
         services.AddScoped<IIntegrationEventPublisher, MassTransitIntegrationEventPublisher>();
-        
+
         return services;
     }
 
@@ -88,6 +92,27 @@ public static class ServiceCollectionExtensions
     {
         services.AddSingleton<IOutboxRepository, MongoOutboxRepository>();
         services.AddHostedService<OutboxBackgroundService>();
+        return services;
+    }
+
+    public static IServiceCollection AddTelemetry(this IServiceCollection services, string serviceName)
+    {
+        
+        services.AddOpenTelemetry()
+            .ConfigureResource(resource => resource.AddService(serviceName))
+            .WithTracing(tracerProviderBuilder =>
+            {
+                tracerProviderBuilder
+                    .AddSource("MassTransit")
+                    .AddAspNetCoreInstrumentation()
+                    .AddHttpClientInstrumentation()
+                    .AddConsoleExporter();
+
+                tracerProviderBuilder.AddOtlpExporter();
+            });
+        
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(OpenTelemetryBehavior<,>));
+
         return services;
     }
 }
