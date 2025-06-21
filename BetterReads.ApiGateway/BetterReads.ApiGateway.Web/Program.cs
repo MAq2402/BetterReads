@@ -13,6 +13,7 @@ builder.Services.AddOpenApi();
 builder.Configuration.AddJsonFile("ocelot.json");
 builder.Services.AddOcelot(builder.Configuration);
 builder.Services.AddKeyVault(builder.Configuration);
+builder.Services.AddTelemetry("ApiGateway");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer("CognitoKey", x =>
     {

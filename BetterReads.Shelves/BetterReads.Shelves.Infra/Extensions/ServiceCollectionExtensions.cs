@@ -21,6 +21,7 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<ITransactionShelvesRepository, MongoShelvesRepository>();
         services.AddSingleton<IShelvesRepository, MongoShelvesRepository>();
         services.AddMassTransitPublisher();
+        services.AddTelemetry("Shelves");
         
         services.AddMassTransit(x =>
         {
@@ -34,6 +35,7 @@ public static class ServiceCollectionExtensions
                 });
             x.UsingAzureServiceBus((context,cfg) =>
             {
+                cfg.UseInstrumentation();
                 cfg.Host(configuration.GetSection("AzureServiceBus").GetValue<string>("ConnectionString"));
                 cfg.ConfigureEndpoints(context);
             });
